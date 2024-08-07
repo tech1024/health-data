@@ -20,5 +20,19 @@ def get_all_hr():
     all_hr_data = fetch_data(garmin_monitoring_db_path, query_all_hr)
     return all_hr_data
 
+@app.route('/weight/api/v1.0/all')
+def get_all_weight():
+    garmin_db_path = './db/garmin.db'
+    query_all_weight = 'SELECT * FROM weight'
+    all_weight_data = fetch_data(garmin_db_path, query_all_weight)
+    return all_weight_data
+
+@app.route('/steps/api/v1.0/all')
+def get_all_steps():
+    summary_db_path = './db/summary.db'
+    query_all_steps = 'SELECT * FROM days_summary'
+    all_steps_data = fetch_data(summary_db_path, query_all_steps)
+    return all_steps_data
+
 if __name__ == '__main__':
     app.run(debug=True)
